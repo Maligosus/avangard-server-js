@@ -5,14 +5,23 @@ import webpackDevMiddleware from "webpack-dev-middleware";
 import webpackHotMiddleware from "webpack-hot-middleware";
 import mysql from "mysql";
 import bodyParser from "body-parser";
-import config from "../../webpack.dev.config.js";
+import config from "../../../webpack.dev.config.js";
 import index from "../routers/index";
-import getUsers from "../routers/getUsers";
+import users from "../routers/users";
 
 const app = express(),
   DIST_DIR = __dirname,
   HTML_FILE = path.join(DIST_DIR, "index.html"),
   compiler = webpack(config);
+
+const mc = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "05vereru",
+  database: "avangard-db"
+});
+
+mc.connect();
 
 app.use(
   webpackDevMiddleware(compiler, {
@@ -26,7 +35,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use("/", index);
-app.use("/getUsers", getUsers);
+app.use("/users", users);
 
 const PORT = process.env.PORT || 8080;
 
