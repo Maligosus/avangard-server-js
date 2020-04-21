@@ -7,7 +7,7 @@ import mysql from "mysql";
 import bodyParser from "body-parser";
 import config from "../../../webpack.dev.config.js";
 import index from "../routers/index";
-import users from "../routers/users";
+import soldiers from "../routers/soldiers";
 
 const app = express(),
   DIST_DIR = __dirname,
@@ -35,7 +35,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use("/", index);
-app.use("/users", users);
+app.use("/soldiers", soldiers);
 
 const PORT = process.env.PORT || 8080;
 
