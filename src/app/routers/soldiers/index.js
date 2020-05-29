@@ -9,7 +9,7 @@ const DIST_DIR = __dirname,
 
 router.get("/", SoldierController.getAllSoldiers);
 router.get("/:userId", SoldierController.getSoldierById);
-router.post("", SoldierController.createNewSoldier);
+router.post("/", SoldierController.createNewSoldier);
 router.post("/login", SoldierController.loginSoldier);
 
 export default router;

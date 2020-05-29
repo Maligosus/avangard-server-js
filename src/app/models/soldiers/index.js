@@ -1,7 +1,7 @@
 import connection from "../../../helpers/db";
 import * as md5 from "md5";
 
-const Soldier = function(user) {
+const Soldier = function (user) {
   this.userId = user.userId;
   this.userName = user.userName;
   this.userSurname = user.userSurname;
@@ -11,8 +11,8 @@ const Soldier = function(user) {
   this.userPassword = md5(user.userPassword);
 };
 
-Soldier.getAll = function(result) {
-  connection.query("Select * from Soldiers", function(err, res) {
+Soldier.getAll = function (result) {
+  connection.query("Select * from Soldiers", function (err, res) {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -23,8 +23,8 @@ Soldier.getAll = function(result) {
   });
 };
 
-Soldier.getSoldier = function(userId, result) {
-  connection.query("Select * from Soldiers where id = ?", userId, function(
+Soldier.getSoldier = function (userId, result) {
+  connection.query("Select * from Soldiers where id = ?", userId, function (
     err,
     res
   ) {
@@ -38,7 +38,7 @@ Soldier.getSoldier = function(userId, result) {
   });
 };
 
-Soldier.createSoldier = function(newUser, result) {
+Soldier.createSoldier = function (newUser, result) {
   connection.query(
     "Insert into Soldiers set ?",
     {
@@ -47,9 +47,9 @@ Soldier.createSoldier = function(newUser, result) {
       patronymic: newUser.userPatronymic,
       id_rank: newUser.userIdRank,
       id_company: newUser.userIdCompany,
-      password: newUser.userPassword
+      password: newUser.userPassword,
     },
-    function(err, res) {
+    function (err, res) {
       if (err) {
         console.log("error: ", err);
         result(err, null);
@@ -61,11 +61,11 @@ Soldier.createSoldier = function(newUser, result) {
   );
 };
 
-Soldier.loginSoldier = function(soldierId, soldierPassword, result) {
+Soldier.loginSoldier = function (soldierId, soldierPassword, result) {
   connection.query(
     "Select `password` from Soldiers where id = ?",
     soldierId,
-    function(err, res) {
+    function (err, res) {
       if (err) {
         console.log("error: ", err);
         result(err, null);

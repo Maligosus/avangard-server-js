@@ -10,4 +10,11 @@ router.get("/", function(req, res) {
   res.sendFile(HTML_FILE);
 });
 
+router.post("/", function(req, res) {
+  console.log(req.body);
+  res.json(req.body);
+});
+
 export default router;
+
+//TODO make more body size like 16MB
