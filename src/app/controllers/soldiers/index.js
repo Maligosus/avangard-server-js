@@ -9,7 +9,7 @@ SoldierController.getAllSoldiers = function (req, res) {
     if (err) {
       res.send(err);
     } else {
-      console.log("res", user);
+      //console.log("res", user);
       res.send(user);
     }
   });

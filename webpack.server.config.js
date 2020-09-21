@@ -43,7 +43,7 @@ module.exports = (env, argv) => {
           }
         }
       ]
-    }
+    },
   };
 };
 

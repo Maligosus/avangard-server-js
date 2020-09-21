@@ -16,10 +16,10 @@ Menu.getMenu = function(day, result) {
     day,
     function(err, res) {
       if (err) {
-        console.log("error: ", err);
+        //console.log("error: ", err);
         result(err, null);
       } else {
-        console.log(res);
+        //console.log(res);
         result(null, res);
       }
     }

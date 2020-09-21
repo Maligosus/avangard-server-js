@@ -6,7 +6,7 @@ const OrderController = function () {
 
 OrderController.sendOrder = function (req, res) {
   const { userId, orderDay, productId } = req.body;
-  console.log(req.body);
+  //console.log(req.body);
   if (!userId || !orderDay) {
     res.status(404).send({
       error: true,
@@ -23,7 +23,7 @@ OrderController.sendOrder = function (req, res) {
 };
 
 OrderController.getAllOrders = function (req, res) {
-  console.log(req.query);
+  //console.log(req.query);
   Orders.getAll(function (err, user) {
     if (err) {
       res.send(err);
@@ -33,7 +33,7 @@ OrderController.getAllOrders = function (req, res) {
 };
 
 OrderController.getOrdersByDate = function (req, res) {
-  console.log(req);
+  //console.log(req);
   Orders.getByDate(req.params.date, function (err, order) {
     if (err) {
       res.send(err);

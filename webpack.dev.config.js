@@ -33,7 +33,7 @@ module.exports = {
         loader: "babel-loader",
       },
       {
-        // Loads the javacript into html template provided.
+        // Loads the javacript into html template provided.s
         // Entry point is set below in HtmlWebPackPlugin in Plugins
         test: /\.html$/,
         use: [

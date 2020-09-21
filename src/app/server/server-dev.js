@@ -13,11 +13,18 @@ import menu from "../routers/menu";
 import orders from "../routers/orders";
 import query from "../routers/query";
 import admin from "../routers/admin";
+import scanResult from '../routers/touchscan'
+import user from '../routers/user';
+import RealTimeServer from '../controllers/realtime-server';
+
+
 
 const app = express(),
   DIST_DIR = __dirname,
   HTML_FILE = path.join(DIST_DIR, "index.html"),
   compiler = webpack(config);
+
+
 
 const mc = mysql.createConnection({
   host: "localhost",
@@ -39,6 +46,11 @@ app.use(webpackHotMiddleware(compiler));
 
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 app.use(bodyParser.json({ limit: "50mb" }));
+/*app.use(bodyParser.raw({
+      inflate:false,
+      limit:'100kb',
+}));*/
+
 
 app.use("/", index);
 app.use("/soldiers", soldiers);
@@ -46,8 +58,14 @@ app.use("/menu", menu);
 app.use("/orders", orders);
 app.use("/query", query);
 app.use("/admin", admin);
+app.use("/touchscan",scanResult);
+app.use("/auth",user);
+
+
 
 const PORT = process.env.PORT || 8080;
+
+const realServer=new RealTimeServer();
 
 app.listen(PORT, () => {
   console.log(`App listening to ${PORT}....`);

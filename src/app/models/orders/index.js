@@ -12,10 +12,10 @@ Orders.createNewOrder = function (userId, orderDay, productId, result) {
     },
     function (err, res) {
       if (err) {
-        console.log("error: ", err);
+        //console.log("error: ", err);
         result(err, null);
       } else {
-        console.log(res);
+        //console.log(res);
         result(null, res.insertId);
       }
     }
@@ -25,10 +25,10 @@ Orders.createNewOrder = function (userId, orderDay, productId, result) {
 Orders.getAll = function (result) {
   connection.query("Select * from Date_table", function (err, res) {
     if (err) {
-      console.log("error: ", err);
+      //console.log("error: ", err);
       result(err, null);
     } else {
-      console.log(res);
+     // console.log(res);
       result(null, res);
     }
   });
@@ -40,10 +40,10 @@ Orders.getByDate = function (date, result) {
     date,
     function (err, res) {
       if (err) {
-        console.log("error: ", err);
+       // console.log("error: ", err);
         result(err, null);
       } else {
-        console.log(res);
+       // console.log(res);
         result(null, res);
       }
     }
@@ -56,10 +56,10 @@ Orders.getBySoldierAndDate = function (date, soldierId, result) {
     [soldierId, date],
     function (err, res) {
       if (err) {
-        console.log("error: ", err);
+       // console.log("error: ", err);
         result(err, null);
       } else {
-        console.log(res);
+       // console.log(res);
         result(null, res);
       }
     }

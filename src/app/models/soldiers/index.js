@@ -14,10 +14,10 @@ const Soldier = function (user) {
 Soldier.getAll = function (result) {
   connection.query("Select * from Soldiers", function (err, res) {
     if (err) {
-      console.log("error: ", err);
+      //console.log("error: ", err);
       result(err, null);
     } else {
-      console.log(res);
+      //console.log(res);
       result(null, res);
     }
   });
@@ -29,10 +29,10 @@ Soldier.getSoldier = function (userId, result) {
     res
   ) {
     if (err) {
-      console.log("error: ", err);
+     // console.log("error: ", err);
       result(err, null);
     } else {
-      console.log(res);
+      //console.log(res);
       result(null, res);
     }
   });
@@ -51,10 +51,10 @@ Soldier.createSoldier = function (newUser, result) {
     },
     function (err, res) {
       if (err) {
-        console.log("error: ", err);
+        //console.log("error: ", err);
         result(err, null);
       } else {
-        console.log(res.insertId);
+        //console.log(res.insertId);
         result(null, res.insertId);
       }
     }
@@ -67,15 +67,15 @@ Soldier.loginSoldier = function (soldierId, soldierPassword, result) {
     soldierId,
     function (err, res) {
       if (err) {
-        console.log("error: ", err);
+        //console.log("error: ", err);
         result(err, null);
       } else {
-        console.log(soldierPassword, res[0].password);
+        //console.log(soldierPassword, res[0].password);
         if (md5(soldierPassword) === res[0].password) {
-          console.log(`soldier with id = ${soldierId} has logged in`);
+          //console.log(`soldier with id = ${soldierId} has logged in`);
           result(null, { logged: true });
         } else {
-          console.log(`wrong key`);
+         // console.log(`wrong key`);
           result(null, { logged: false });
         }
       }
